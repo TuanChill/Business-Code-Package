@@ -1,0 +1,74 @@
+{
+  "name": "@tchil/business-codes",
+  "version": "1.0.0",
+  "description": "A TypeScript library for HTTP status codes, business error codes, and standardized API responses. Compatible with NestJS and Next.js.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./nestjs": {
+      "import": "./dist/esm/nestjs/index.js",
+      "require": "./dist/cjs/nestjs/index.js",
+      "types": "./dist/types/nestjs/index.d.ts"
+    },
+    "./nextjs": {
+      "import": "./dist/esm/nextjs/index.js",
+      "require": "./dist/cjs/nextjs/index.js",
+      "types": "./dist/types/nextjs/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c && npm run build:types",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "http-status",
+    "status-codes",
+    "api-response",
+    "nestjs",
+    "nextjs",
+    "typescript",
+    "error-handling"
+  ],
+  "author": "tuanchill",
+  "license": "MIT",
+  "devDependencies": {
+    "@nestjs/common": "^11.1.9",
+    "@nestjs/core": "^11.1.9",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/express": "^5.0.6",
+    "@types/node": "^20.10.0",
+    "reflect-metadata": "^0.2.2",
+    "rollup": "^4.6.0",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=9.0.0",
+    "@nestjs/core": ">=9.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    },
+    "@nestjs/core": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
