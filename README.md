@@ -9,6 +9,7 @@ A TypeScript library for HTTP status codes, business error codes, and standardiz
 - 📋 **ApiResponse Class** - Standardized response format with pagination support
 - 🦅 **NestJS Integration** - Exception filter, response interceptor, and custom exceptions
 - ⚡ **Next.js Integration** - Response helpers for App Router API routes
+- 🌍 **I18n Support** - Localized messages (English/Vietnamese) with custom override
 - 🔷 **TypeScript First** - Full type safety and IntelliSense support
 - 📦 **Dual Package** - Supports both ESM and CommonJS
 
@@ -217,6 +218,85 @@ export async function GET(
 
   return jsonSuccess(user);
 }
+```
+
+---
+
+## 🌍 I18n (Internationalization)
+
+Localized error messages with English and Vietnamese support, plus custom override capability.
+
+### Setup Provider (One-time in Layout)
+
+```tsx
+// app/layout.tsx
+import { BusinessMessageProvider } from "@tchil/business-codes/i18n/react";
+
+export default function RootLayout({ children }) {
+  const locale = "vi"; // or get from cookies/headers
+
+  return (
+    <BusinessMessageProvider locale={locale}>
+      {children}
+    </BusinessMessageProvider>
+  );
+}
+```
+
+### Use in Components
+
+```tsx
+// Any component - no need to pass locale!
+import { useBusinessMessage } from "@tchil/business-codes/i18n/react";
+
+function MyComponent() {
+  const { getMessage, getResponseMessage } = useBusinessMessage();
+
+  const handleApiError = (response) => {
+    // Automatically uses configured locale
+    toast.error(getResponseMessage(response));
+    // Vietnamese: "Không tìm thấy người dùng"
+    // English: "User not found"
+  };
+
+  // Or get message by code directly
+  const message = getMessage(2001); // BusinessCode.USER_NOT_FOUND
+}
+```
+
+### Custom Message Override
+
+```tsx
+<BusinessMessageProvider
+  locale="vi"
+  customMessages={{
+    2001: "Tài khoản không tồn tại", // Override default Vietnamese
+  }}
+>
+  {children}
+</BusinessMessageProvider>
+```
+
+### Direct Usage (Without React)
+
+```typescript
+import {
+  getLocalizedMessage,
+  setLocale,
+  registerMessages,
+} from "@tchil/business-codes/i18n";
+
+// Set global locale
+setLocale("vi");
+
+// Get localized message
+getLocalizedMessage(2001); // "Không tìm thấy người dùng"
+getLocalizedMessage(2001, "en"); // "User not found"
+
+// Register custom messages
+registerMessages("vi", {
+  2001: "Người dùng không tồn tại",
+});
 ```
 
 ---
