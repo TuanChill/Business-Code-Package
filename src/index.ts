@@ -44,3 +44,13 @@ export type {
   ErrorParams,
   ApiResponseParams,
 } from './types';
+
+// I18n
+export type { Locale, MessageMap, I18nConfig } from './i18n';
+export {
+  BusinessMessageProvider as MessageProvider,
+  messageProvider,
+  getLocalizedMessage,
+  setLocale,
+  registerMessages,
+} from './i18n';

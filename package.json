@@ -20,6 +20,16 @@
       "import": "./dist/esm/nextjs/index.js",
       "require": "./dist/cjs/nextjs/index.js",
       "types": "./dist/types/nextjs/index.d.ts"
+    },
+    "./i18n": {
+      "import": "./dist/esm/i18n/index.js",
+      "require": "./dist/cjs/i18n/index.js",
+      "types": "./dist/types/i18n/index.d.ts"
+    },
+    "./i18n/react": {
+      "import": "./dist/esm/i18n/react/index.js",
+      "require": "./dist/cjs/i18n/react/index.js",
+      "types": "./dist/types/i18n/react/index.d.ts"
     }
   },
   "files": [
@@ -30,8 +40,8 @@
     "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build",
-    "lint": "eslint src --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -43,7 +53,8 @@
     "nestjs",
     "nextjs",
     "typescript",
-    "error-handling"
+    "error-handling",
+    "i18n"
   ],
   "author": "tuanchill",
   "license": "MIT",
@@ -54,7 +65,9 @@
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
     "jest": "^30.2.0",
+    "react": "^18.2.0",
     "reflect-metadata": "^0.2.2",
     "rollup": "^4.6.0",
     "rxjs": "^7.8.2",
@@ -64,13 +77,17 @@
   },
   "peerDependencies": {
     "@nestjs/common": ">=9.0.0",
-    "@nestjs/core": ">=9.0.0"
+    "@nestjs/core": ">=9.0.0",
+    "react": ">=17.0.0"
   },
   "peerDependenciesMeta": {
     "@nestjs/common": {
       "optional": true
     },
     "@nestjs/core": {
+      "optional": true
+    },
+    "react": {
       "optional": true
     }
   },

@@ -1,6 +1,13 @@
 import typescript from "@rollup/plugin-typescript";
 
-const external = ["@nestjs/common", "@nestjs/core", "rxjs", "rxjs/operators"];
+const external = [
+  "@nestjs/common",
+  "@nestjs/core",
+  "rxjs",
+  "rxjs/operators",
+  "react",
+  "react/jsx-runtime",
+];
 
 export default [
   // ESM build
@@ -9,6 +16,8 @@ export default [
       index: "src/index.ts",
       "nestjs/index": "src/nestjs/index.ts",
       "nextjs/index": "src/nextjs/index.ts",
+      "i18n/index": "src/i18n/index.ts",
+      "i18n/react/index": "src/i18n/react/index.ts",
     },
     output: {
       dir: "dist/esm",
@@ -32,6 +41,8 @@ export default [
       index: "src/index.ts",
       "nestjs/index": "src/nestjs/index.ts",
       "nextjs/index": "src/nextjs/index.ts",
+      "i18n/index": "src/i18n/index.ts",
+      "i18n/react/index": "src/i18n/react/index.ts",
     },
     output: {
       dir: "dist/cjs",
