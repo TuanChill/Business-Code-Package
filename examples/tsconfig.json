@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tchil/business-codes": ["../src/index.ts"],
+      "@tchil/business-codes/nestjs": ["../src/nestjs/index.ts"],
+      "@tchil/business-codes/nextjs": ["../src/nextjs/index.ts"],
+      "@tchil/business-codes/i18n": ["../src/i18n/index.ts"],
+      "@tchil/business-codes/i18n/react": ["../src/i18n/react/index.ts"]
+    }
+  },
+  "include": ["**/*", "../src/**/*"]
+}

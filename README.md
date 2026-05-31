@@ -452,6 +452,17 @@ getRawData() {
 
 ---
 
+## 🧪 Examples
+
+Runnable consumer examples live in [`examples/`](./examples/) and are tested as part of `npm test`.
+
+| Example | What it demonstrates |
+|---------|---------------------|
+| [`examples/nestjs/`](./examples/nestjs/) | `ApiResponseInterceptorAdvanced`, `ApiExceptionFilter`, typed exceptions (`NotFoundException`, `ConflictException`, `ValidationException`), `@SkipApiResponse()`, paginated responses — tested with `@nestjs/testing` + supertest |
+| [`examples/nextjs/`](./examples/nextjs/) | App Router route handlers using `jsonSuccess`, `jsonCreated`, `jsonPaginated`, `jsonNotFound`, `withErrorHandler`, `parseBody`, `parsePagination` — plus `BusinessMessageProvider` + `useBusinessMessage` React hook tested with `@testing-library/react` |
+
+---
+
 ## 📄 License
 
 MIT
