@@ -8,11 +8,11 @@ import {
   HttpCode,
   Query,
 } from '@nestjs/common';
-import { ApiResponse, BusinessCode } from '@tchil/business-codes';
+import { ApiResponse, BusinessCode } from '@tuanchill/business-codes';
 import {
   SkipApiResponse,
   ValidationException,
-} from '@tchil/business-codes/nestjs';
+} from '@tuanchill/business-codes/nestjs';
 import { UsersService } from './users.service';
 import type { CreateUserDto } from './user.types';
 

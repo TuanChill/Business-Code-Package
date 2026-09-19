@@ -5,7 +5,7 @@ Standardized response format for all API responses.
 ## Import
 
 ```typescript
-import { ApiResponse } from "@tchil/business-codes";
+import { ApiResponse } from "@tuanchill/business-codes";
 ```
 
 ---
@@ -279,5 +279,5 @@ import type {
   PaginatedParams,
   ErrorParams,
   ApiResponseParams,
-} from "@tchil/business-codes";
+} from "@tuanchill/business-codes";
 ```

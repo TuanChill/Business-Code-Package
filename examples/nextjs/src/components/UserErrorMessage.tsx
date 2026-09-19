@@ -1,6 +1,6 @@
 "use client";
 
-import { useBusinessMessage } from '@tchil/business-codes/i18n/react';
+import { useBusinessMessage } from '@tuanchill/business-codes/i18n/react';
 
 interface UserErrorMessageProps {
   response: {

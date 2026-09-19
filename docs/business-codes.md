@@ -16,7 +16,7 @@ import {
   isSystemError,
   isExternalError,
   isBusinessLogicError,
-} from "@tchil/business-codes";
+} from "@tuanchill/business-codes";
 ```
 
 ---
@@ -223,7 +223,7 @@ import {
   isAuthError,
   isValidationError,
   BusinessCode,
-} from "@tchil/business-codes";
+} from "@tuanchill/business-codes";
 
 function handleError(code: number) {
   if (isAuthError(code)) {
@@ -239,7 +239,7 @@ function handleError(code: number) {
 ### Mapping Codes to HTTP Status
 
 ```typescript
-import { BusinessCode, HttpStatus } from "@tchil/business-codes";
+import { BusinessCode, HttpStatus } from "@tuanchill/business-codes";
 
 const codeToStatus: Record<number, number> = {
   [BusinessCode.USER_NOT_FOUND]: HttpStatus.NOT_FOUND,

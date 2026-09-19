@@ -4,13 +4,13 @@
 
 ```bash
 # npm
-npm install @tchil/business-codes
+npm install @tuanchill/business-codes
 
 # yarn
-yarn add @tchil/business-codes
+yarn add @tuanchill/business-codes
 
 # pnpm
-pnpm add @tchil/business-codes
+pnpm add @tuanchill/business-codes
 ```
 
 ## Requirements
@@ -33,7 +33,7 @@ pnpm add @tchil/business-codes
 ### 1. Basic Usage
 
 ```typescript
-import { HttpStatus, BusinessCode, ApiResponse } from "@tchil/business-codes";
+import { HttpStatus, BusinessCode, ApiResponse } from "@tuanchill/business-codes";
 
 // Create success response
 const response = ApiResponse.success({
@@ -71,7 +71,7 @@ import { NestFactory } from "@nestjs/core";
 import {
   ApiExceptionFilter,
   ApiResponseInterceptor,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -94,8 +94,8 @@ import {
   jsonSuccess,
   jsonNotFound,
   withErrorHandler,
-} from "@tchil/business-codes/nextjs";
-import { BusinessCode } from "@tchil/business-codes";
+} from "@tuanchill/business-codes/nextjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 export const GET = withErrorHandler(async (request) => {
   const user = await findUser();
@@ -112,7 +112,7 @@ export const GET = withErrorHandler(async (request) => {
 
 ```tsx
 // app/layout.tsx
-import { BusinessMessageProvider } from "@tchil/business-codes/i18n/react";
+import { BusinessMessageProvider } from "@tuanchill/business-codes/i18n/react";
 
 export default function RootLayout({ children }) {
   return (
@@ -121,7 +121,7 @@ export default function RootLayout({ children }) {
 }
 
 // Any component
-import { useBusinessMessage } from "@tchil/business-codes/i18n/react";
+import { useBusinessMessage } from "@tuanchill/business-codes/i18n/react";
 
 function MyComponent() {
   const { getResponseMessage } = useBusinessMessage();

@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { jsonSuccess, jsonError } from '@tchil/business-codes/nextjs';
+ * import { jsonSuccess, jsonError } from '@tuanchill/business-codes/nextjs';
  *
  * export async function GET() {
  *   const users = await getUsers();

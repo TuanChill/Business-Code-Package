@@ -38,13 +38,13 @@ import {
   InternalServerException,
   BadRequestException,
   ServiceUnavailableException,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 // Types
 import type {
   ApiExceptionFilterOptions,
   ApiResponseInterceptorOptions,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 ```
 
 ---
@@ -59,7 +59,7 @@ import { NestFactory } from "@nestjs/core";
 import {
   ApiExceptionFilter,
   ApiResponseInterceptor,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -85,7 +85,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 import {
   ApiExceptionFilter,
   ApiResponseInterceptor,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 @Module({
   providers: [
@@ -263,7 +263,7 @@ Extended interceptor with `@SkipApiResponse()` decorator support.
 import {
   ApiResponseInterceptorAdvanced,
   SkipApiResponse,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 // Setup
 app.useGlobalInterceptors(new ApiResponseInterceptorAdvanced());
@@ -282,7 +282,7 @@ export class FilesController {
 ### SkipApiResponse Decorator
 
 ```typescript
-import { SkipApiResponse } from "@tchil/business-codes/nestjs";
+import { SkipApiResponse } from "@tuanchill/business-codes/nestjs";
 
 @Get("raw")
 @SkipApiResponse()
@@ -296,7 +296,7 @@ getRawData() {
 Metadata key constant for custom decorators:
 
 ```typescript
-import { SKIP_API_RESPONSE_KEY } from "@tchil/business-codes/nestjs";
+import { SKIP_API_RESPONSE_KEY } from "@tuanchill/business-codes/nestjs";
 
 // Value: "skipApiResponse"
 ```
@@ -328,8 +328,8 @@ class BusinessException extends Error {
 **Example:**
 
 ```typescript
-import { BusinessException } from "@tchil/business-codes/nestjs";
-import { BusinessCode, HttpStatus } from "@tchil/business-codes";
+import { BusinessException } from "@tuanchill/business-codes/nestjs";
+import { BusinessCode, HttpStatus } from "@tuanchill/business-codes";
 
 throw new BusinessException(
   BusinessCode.OPERATION_NOT_ALLOWED,
@@ -357,8 +357,8 @@ class NotFoundException extends BusinessException {
 **Examples:**
 
 ```typescript
-import { NotFoundException } from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+import { NotFoundException } from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 // Default
 throw new NotFoundException();
@@ -391,7 +391,7 @@ class ValidationException extends BusinessException {
 **Examples:**
 
 ```typescript
-import { ValidationException } from "@tchil/business-codes/nestjs";
+import { ValidationException } from "@tuanchill/business-codes/nestjs";
 
 throw new ValidationException({
   email: "Must be a valid email address",
@@ -425,8 +425,8 @@ class AuthException extends BusinessException {
 **Examples:**
 
 ```typescript
-import { AuthException } from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+import { AuthException } from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 // Default
 throw new AuthException();
@@ -460,7 +460,7 @@ class ForbiddenException extends BusinessException {
 **Example:**
 
 ```typescript
-import { ForbiddenException } from "@tchil/business-codes/nestjs";
+import { ForbiddenException } from "@tuanchill/business-codes/nestjs";
 
 throw new ForbiddenException(
   "You do not have permission to access this resource"
@@ -486,8 +486,8 @@ class ConflictException extends BusinessException {
 **Examples:**
 
 ```typescript
-import { ConflictException } from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+import { ConflictException } from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 throw new ConflictException(
   "Email already exists",
@@ -514,7 +514,7 @@ class BadRequestException extends BusinessException {
 **Example:**
 
 ```typescript
-import { BadRequestException } from "@tchil/business-codes/nestjs";
+import { BadRequestException } from "@tuanchill/business-codes/nestjs";
 
 throw new BadRequestException("Invalid request body format");
 // → 400 { code: 3002, message: "Invalid request body format" }
@@ -537,7 +537,7 @@ class RateLimitException extends BusinessException {
 **Example:**
 
 ```typescript
-import { RateLimitException } from "@tchil/business-codes/nestjs";
+import { RateLimitException } from "@tuanchill/business-codes/nestjs";
 
 throw new RateLimitException(
   "Too many login attempts. Please try again in 5 minutes."
@@ -563,8 +563,8 @@ class InternalServerException extends BusinessException {
 **Examples:**
 
 ```typescript
-import { InternalServerException } from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+import { InternalServerException } from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 throw new InternalServerException(
   "Database connection failed",
@@ -591,7 +591,7 @@ class ServiceUnavailableException extends BusinessException {
 **Example:**
 
 ```typescript
-import { ServiceUnavailableException } from "@tchil/business-codes/nestjs";
+import { ServiceUnavailableException } from "@tuanchill/business-codes/nestjs";
 
 throw new ServiceUnavailableException("Service is under maintenance");
 // → 503 { code: 5004, message: "Service is under maintenance" }
@@ -611,8 +611,8 @@ import {
   ValidationException,
   AuthException,
   ConflictException,
-} from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+} from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 @Injectable()
 export class UserService {
@@ -685,7 +685,7 @@ import {
   Param,
   Query,
 } from "@nestjs/common";
-import { ApiResponse } from "@tchil/business-codes";
+import { ApiResponse } from "@tuanchill/business-codes";
 import { UserService } from "./user.service";
 
 @Controller("users")
@@ -826,5 +826,5 @@ export class UserController {
 import type {
   ApiExceptionFilterOptions,
   ApiResponseInterceptorOptions,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 ```

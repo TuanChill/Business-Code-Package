@@ -1,5 +1,5 @@
-import { BusinessCode } from '@tchil/business-codes';
-import { jsonSuccess, jsonNotFound, jsonNoContent } from '@tchil/business-codes/nextjs';
+import { BusinessCode } from '@tuanchill/business-codes';
+import { jsonSuccess, jsonNotFound, jsonNoContent } from '@tuanchill/business-codes/nextjs';
 
 interface User {
   id: string;

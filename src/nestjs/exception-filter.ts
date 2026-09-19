@@ -27,7 +27,7 @@ export interface ApiExceptionFilterOptions {
  * @example
  * ```typescript
  * // In main.ts
- * import { ApiExceptionFilter } from '@tchil/business-codes/nestjs';
+ * import { ApiExceptionFilter } from '@tuanchill/business-codes/nestjs';
  *
  * async function bootstrap() {
  *   const app = await NestFactory.create(AppModule);

@@ -9,7 +9,7 @@
  * @example
  * ```tsx
  * // app/layout.tsx
- * import { BusinessMessageProvider } from '@tchil/business-codes/i18n/react';
+ * import { BusinessMessageProvider } from '@tuanchill/business-codes/i18n/react';
  *
  * export default function RootLayout({ children }) {
  *   return (
@@ -20,7 +20,7 @@
  * }
  *
  * // Any component
- * import { useBusinessMessage } from '@tchil/business-codes/i18n/react';
+ * import { useBusinessMessage } from '@tuanchill/business-codes/i18n/react';
  *
  * function MyComponent() {
  *   const { getMessage, getResponseMessage } = useBusinessMessage();

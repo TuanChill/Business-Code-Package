@@ -1,4 +1,4 @@
-import { BusinessCode } from '@tchil/business-codes';
+import { BusinessCode } from '@tuanchill/business-codes';
 import { GET as getUsers, POST as postUser, resetStore } from '../src/app/api/users/route';
 import { GET as getUser, DELETE as deleteUser } from '../src/app/api/users/[id]/route';
 import { GET as getErrorDemo } from '../src/app/api/error-demo/route';

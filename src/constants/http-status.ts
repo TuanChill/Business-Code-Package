@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { HttpStatus } from '@tchil/business-codes';
+ * import { HttpStatus } from '@tuanchill/business-codes';
  *
  * res.status(HttpStatus.OK).json({ message: 'Success' });
  * ```

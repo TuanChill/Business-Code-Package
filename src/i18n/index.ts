@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { getLocalizedMessage, setLocale, registerMessages } from '@tchil/business-codes/i18n';
+ * import { getLocalizedMessage, setLocale, registerMessages } from '@tuanchill/business-codes/i18n';
  *
  * // Set global locale
  * setLocale('vi');

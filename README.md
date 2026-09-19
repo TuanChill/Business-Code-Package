@@ -1,4 +1,4 @@
-# @tchil/business-codes
+# @tuanchill/business-codes
 
 A TypeScript library for HTTP status codes, business error codes, and standardized API responses. Compatible with **NestJS** and **Next.js**.
 
@@ -16,11 +16,11 @@ A TypeScript library for HTTP status codes, business error codes, and standardiz
 ## 📥 Installation
 
 ```bash
-npm install @tchil/business-codes
+npm install @tuanchill/business-codes
 # or
-yarn add @tchil/business-codes
+yarn add @tuanchill/business-codes
 # or
-pnpm add @tchil/business-codes
+pnpm add @tuanchill/business-codes
 ```
 
 ## 🚀 Quick Start
@@ -28,7 +28,7 @@ pnpm add @tchil/business-codes
 ### Basic Usage
 
 ```typescript
-import { HttpStatus, BusinessCode, ApiResponse } from "@tchil/business-codes";
+import { HttpStatus, BusinessCode, ApiResponse } from "@tuanchill/business-codes";
 
 // Success response
 const success = ApiResponse.success({
@@ -64,7 +64,7 @@ import { NestFactory } from "@nestjs/core";
 import {
   ApiExceptionFilter,
   ApiResponseInterceptor,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -88,8 +88,8 @@ import {
   NotFoundException,
   ValidationException,
   AuthException,
-} from "@tchil/business-codes/nestjs";
-import { BusinessCode } from "@tchil/business-codes";
+} from "@tuanchill/business-codes/nestjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 @Injectable()
 export class UserService {
@@ -130,7 +130,7 @@ export class UserService {
 ```typescript
 // user.controller.ts
 import { Controller, Get, Post, Body, Param } from "@nestjs/common";
-import { ApiResponse } from "@tchil/business-codes";
+import { ApiResponse } from "@tuanchill/business-codes";
 
 @Controller("users")
 export class UserController {
@@ -180,8 +180,8 @@ import {
   withErrorHandler,
   parseBody,
   parsePagination,
-} from "@tchil/business-codes/nextjs";
-import { BusinessCode, HttpStatus } from "@tchil/business-codes";
+} from "@tuanchill/business-codes/nextjs";
+import { BusinessCode, HttpStatus } from "@tuanchill/business-codes";
 
 // GET /api/users
 export const GET = withErrorHandler(async (request) => {
@@ -203,8 +203,8 @@ export const POST = withErrorHandler(async (request) => {
 
 ```typescript
 // app/api/users/[id]/route.ts
-import { jsonSuccess, jsonNotFound } from "@tchil/business-codes/nextjs";
-import { BusinessCode } from "@tchil/business-codes";
+import { jsonSuccess, jsonNotFound } from "@tuanchill/business-codes/nextjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 export async function GET(
   request: Request,
@@ -230,7 +230,7 @@ Localized error messages with English and Vietnamese support, plus custom overri
 
 ```tsx
 // app/layout.tsx
-import { BusinessMessageProvider } from "@tchil/business-codes/i18n/react";
+import { BusinessMessageProvider } from "@tuanchill/business-codes/i18n/react";
 
 export default function RootLayout({ children }) {
   const locale = "vi"; // or get from cookies/headers
@@ -247,7 +247,7 @@ export default function RootLayout({ children }) {
 
 ```tsx
 // Any component - no need to pass locale!
-import { useBusinessMessage } from "@tchil/business-codes/i18n/react";
+import { useBusinessMessage } from "@tuanchill/business-codes/i18n/react";
 
 function MyComponent() {
   const { getMessage, getResponseMessage } = useBusinessMessage();
@@ -284,7 +284,7 @@ import {
   getLocalizedMessage,
   setLocale,
   registerMessages,
-} from "@tchil/business-codes/i18n";
+} from "@tuanchill/business-codes/i18n";
 
 // Set global locale
 setLocale("vi");
@@ -310,7 +310,7 @@ import {
   HttpStatus,
   getHttpStatusMessage,
   isSuccessStatus,
-} from "@tchil/business-codes";
+} from "@tuanchill/business-codes";
 
 HttpStatus.OK; // 200
 HttpStatus.CREATED; // 201
@@ -329,7 +329,7 @@ isServerError(500); // true
 ### Business Codes
 
 ```typescript
-import { BusinessCode, getBusinessCodeMessage } from "@tchil/business-codes";
+import { BusinessCode, getBusinessCodeMessage } from "@tuanchill/business-codes";
 
 // Success (0-99)
 BusinessCode.SUCCESS; // 0
@@ -364,7 +364,7 @@ getBusinessCodeMessage(BusinessCode.USER_NOT_FOUND); // 'User not found'
 ### ApiResponse Class
 
 ```typescript
-import { ApiResponse } from '@tchil/business-codes';
+import { ApiResponse } from '@tuanchill/business-codes';
 
 // Factory methods
 ApiResponse.success({ data, message?, statusCode?, meta? })
@@ -441,7 +441,7 @@ app.useGlobalFilters(
 ### NestJS Skip Interceptor
 
 ```typescript
-import { SkipApiResponse } from '@tchil/business-codes/nestjs';
+import { SkipApiResponse } from '@tuanchill/business-codes/nestjs';
 
 @Get('raw')
 @SkipApiResponse()

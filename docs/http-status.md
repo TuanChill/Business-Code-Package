@@ -12,7 +12,7 @@ import {
   isClientError,
   isServerError,
   isRedirect,
-} from "@tchil/business-codes";
+} from "@tuanchill/business-codes";
 ```
 
 ---
@@ -162,7 +162,7 @@ isRedirect(200); // false
 TypeScript type for all valid HTTP status codes.
 
 ```typescript
-import type { HttpStatusCode } from "@tchil/business-codes";
+import type { HttpStatusCode } from "@tuanchill/business-codes";
 
 function handleResponse(status: HttpStatusCode) {
   // TypeScript knows status is a valid HTTP code
@@ -176,7 +176,7 @@ function handleResponse(status: HttpStatusCode) {
 ### Express
 
 ```typescript
-import { HttpStatus } from "@tchil/business-codes";
+import { HttpStatus } from "@tuanchill/business-codes";
 
 app.get("/users/:id", async (req, res) => {
   const user = await findUser(req.params.id);
@@ -192,7 +192,7 @@ app.get("/users/:id", async (req, res) => {
 ### NestJS
 
 ```typescript
-import { HttpStatus } from "@tchil/business-codes";
+import { HttpStatus } from "@tuanchill/business-codes";
 import { HttpException } from "@nestjs/common";
 
 throw new HttpException("User not found", HttpStatus.NOT_FOUND);
@@ -201,7 +201,7 @@ throw new HttpException("User not found", HttpStatus.NOT_FOUND);
 ### Next.js
 
 ```typescript
-import { HttpStatus } from "@tchil/business-codes";
+import { HttpStatus } from "@tuanchill/business-codes";
 
 return new Response(JSON.stringify({ error: "Not found" }), {
   status: HttpStatus.NOT_FOUND,

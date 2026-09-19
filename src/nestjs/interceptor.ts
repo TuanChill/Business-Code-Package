@@ -28,7 +28,7 @@ export interface ApiResponseInterceptorOptions {
  * @example
  * ```typescript
  * // In main.ts
- * import { ApiResponseInterceptor } from '@tchil/business-codes/nestjs';
+ * import { ApiResponseInterceptor } from '@tuanchill/business-codes/nestjs';
  *
  * async function bootstrap() {
  *   const app = await NestFactory.create(AppModule);

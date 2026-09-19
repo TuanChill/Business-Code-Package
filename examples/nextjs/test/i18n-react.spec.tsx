@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderHook, act } from '@testing-library/react';
-import { BusinessMessageProvider, useBusinessMessage } from '@tchil/business-codes/i18n/react';
-import { BusinessCode } from '@tchil/business-codes';
+import { BusinessMessageProvider, useBusinessMessage } from '@tuanchill/business-codes/i18n/react';
+import { BusinessCode } from '@tuanchill/business-codes';
 
 function makeWrapper(locale: 'en' | 'vi') {
   return function Wrapper({ children }: { children: React.ReactNode }) {

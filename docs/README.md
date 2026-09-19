@@ -1,4 +1,4 @@
-# @tchil/business-codes Documentation
+# @tuanchill/business-codes Documentation
 
 Comprehensive documentation for the TypeScript library providing HTTP status codes, business error codes, and standardized API responses.
 
@@ -19,7 +19,7 @@ Comprehensive documentation for the TypeScript library providing HTTP status cod
 This library provides a complete solution for handling API responses and error codes in TypeScript applications:
 
 ```
-@tchil/business-codes
+@tuanchill/business-codes
 ├── Core
 │   ├── HttpStatus        - HTTP status codes (200, 404, 500, etc.)
 │   ├── BusinessCode      - Business error codes (1001, 2001, etc.)
@@ -36,21 +36,21 @@ This library provides a complete solution for handling API responses and error c
 
 ```typescript
 // Main exports
-import { HttpStatus, BusinessCode, ApiResponse } from "@tchil/business-codes";
+import { HttpStatus, BusinessCode, ApiResponse } from "@tuanchill/business-codes";
 
 // NestJS integration
 import {
   ApiExceptionFilter,
   BusinessException,
-} from "@tchil/business-codes/nestjs";
+} from "@tuanchill/business-codes/nestjs";
 
 // Next.js integration
-import { jsonSuccess, jsonError } from "@tchil/business-codes/nextjs";
+import { jsonSuccess, jsonError } from "@tuanchill/business-codes/nextjs";
 
 // I18n
-import { getLocalizedMessage, setLocale } from "@tchil/business-codes/i18n";
+import { getLocalizedMessage, setLocale } from "@tuanchill/business-codes/i18n";
 import {
   BusinessMessageProvider,
   useBusinessMessage,
-} from "@tchil/business-codes/i18n/react";
+} from "@tuanchill/business-codes/i18n/react";
 ```

@@ -6,11 +6,11 @@
  * @example
  * ```tsx
  * // Layout
- * import { BusinessMessageProvider } from '@tchil/business-codes/i18n/react';
+ * import { BusinessMessageProvider } from '@tuanchill/business-codes/i18n/react';
  * <BusinessMessageProvider locale="vi">{children}</BusinessMessageProvider>
  *
  * // Component
- * import { useBusinessMessage } from '@tchil/business-codes/i18n/react';
+ * import { useBusinessMessage } from '@tuanchill/business-codes/i18n/react';
  * const { getMessage, getResponseMessage } = useBusinessMessage();
  * ```
  */

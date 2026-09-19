@@ -1,4 +1,4 @@
-import { BusinessCode } from '@tchil/business-codes';
+import { BusinessCode } from '@tuanchill/business-codes';
 import {
   jsonSuccess,
   jsonCreated,
@@ -6,7 +6,7 @@ import {
   jsonPaginated,
   parseBody,
   parsePagination,
-} from '@tchil/business-codes/nextjs';
+} from '@tuanchill/business-codes/nextjs';
 
 interface User {
   id: string;

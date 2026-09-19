@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import {
   NotFoundException,
   ConflictException,
-} from '@tchil/business-codes/nestjs';
-import { BusinessCode } from '@tchil/business-codes';
+} from '@tuanchill/business-codes/nestjs';
+import { BusinessCode } from '@tuanchill/business-codes';
 import { User, CreateUserDto } from './user.types';
 
 @Injectable()

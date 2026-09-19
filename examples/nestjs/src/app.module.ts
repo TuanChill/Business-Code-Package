@@ -3,7 +3,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import {
   ApiExceptionFilter,
   ApiResponseInterceptorAdvanced,
-} from '@tchil/business-codes/nestjs';
+} from '@tuanchill/business-codes/nestjs';
 import { UsersModule } from './users/users.module';
 
 @Module({

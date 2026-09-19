@@ -16,7 +16,7 @@
  *
  * @example
  * ```typescript
- * import { BusinessCode, getBusinessCodeMessage } from '@tchil/business-codes';
+ * import { BusinessCode, getBusinessCodeMessage } from '@tuanchill/business-codes';
  *
  * throw new BusinessException(BusinessCode.USER_NOT_FOUND, 'User does not exist');
  * ```

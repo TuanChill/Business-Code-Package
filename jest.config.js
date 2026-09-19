@@ -1,11 +1,11 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 
 const businessCodesMap = {
-  '^@tchil/business-codes/nestjs$': '<rootDir>/src/nestjs/index.ts',
-  '^@tchil/business-codes/nextjs$': '<rootDir>/src/nextjs/index.ts',
-  '^@tchil/business-codes/i18n/react$': '<rootDir>/src/i18n/react/index.ts',
-  '^@tchil/business-codes/i18n$': '<rootDir>/src/i18n/index.ts',
-  '^@tchil/business-codes$': '<rootDir>/src/index.ts',
+  '^@tuanchill/business-codes/nestjs$': '<rootDir>/src/nestjs/index.ts',
+  '^@tuanchill/business-codes/nextjs$': '<rootDir>/src/nextjs/index.ts',
+  '^@tuanchill/business-codes/i18n/react$': '<rootDir>/src/i18n/react/index.ts',
+  '^@tuanchill/business-codes/i18n$': '<rootDir>/src/i18n/index.ts',
+  '^@tuanchill/business-codes$': '<rootDir>/src/index.ts',
 };
 
 module.exports = {

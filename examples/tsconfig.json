@@ -15,11 +15,11 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
-      "@tchil/business-codes": ["../src/index.ts"],
-      "@tchil/business-codes/nestjs": ["../src/nestjs/index.ts"],
-      "@tchil/business-codes/nextjs": ["../src/nextjs/index.ts"],
-      "@tchil/business-codes/i18n": ["../src/i18n/index.ts"],
-      "@tchil/business-codes/i18n/react": ["../src/i18n/react/index.ts"]
+      "@tuanchill/business-codes": ["../src/index.ts"],
+      "@tuanchill/business-codes/nestjs": ["../src/nestjs/index.ts"],
+      "@tuanchill/business-codes/nextjs": ["../src/nextjs/index.ts"],
+      "@tuanchill/business-codes/i18n": ["../src/i18n/index.ts"],
+      "@tuanchill/business-codes/i18n/react": ["../src/i18n/react/index.ts"]
     }
   },
   "include": ["**/*", "../src/**/*"]

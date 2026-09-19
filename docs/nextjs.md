@@ -39,10 +39,10 @@ import {
   withErrorHandler,
   parseBody,
   parsePagination,
-} from "@tchil/business-codes/nextjs";
+} from "@tuanchill/business-codes/nextjs";
 
 // Types
-import type { NextResponseOptions } from "@tchil/business-codes/nextjs";
+import type { NextResponseOptions } from "@tuanchill/business-codes/nextjs";
 ```
 
 ---
@@ -188,7 +188,7 @@ function jsonError(
 **Example:**
 
 ```typescript
-import { HttpStatus, BusinessCode } from "@tchil/business-codes";
+import { HttpStatus, BusinessCode } from "@tuanchill/business-codes";
 
 return jsonError(
   "Custom error message",
@@ -560,7 +560,7 @@ import {
   withErrorHandler,
   parseBody,
   parsePagination,
-} from "@tchil/business-codes/nextjs";
+} from "@tuanchill/business-codes/nextjs";
 
 // GET /api/users
 export const GET = withErrorHandler(async (request) => {
@@ -594,8 +594,8 @@ import {
   jsonNoContent,
   withErrorHandler,
   parseBody,
-} from "@tchil/business-codes/nextjs";
-import { BusinessCode } from "@tchil/business-codes";
+} from "@tuanchill/business-codes/nextjs";
+import { BusinessCode } from "@tuanchill/business-codes";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -644,5 +644,5 @@ export const DELETE = withErrorHandler(async (request: Request, context) => {
 ## TypeScript Types
 
 ```typescript
-import type { NextResponseOptions } from "@tchil/business-codes/nextjs";
+import type { NextResponseOptions } from "@tuanchill/business-codes/nextjs";
 ```
