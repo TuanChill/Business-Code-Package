@@ -1,14 +1,8 @@
-import {
-  ExceptionFilter,
-  Catch,
-  ArgumentsHost,
-  HttpException,
-  HttpStatus as NestHttpStatus,
-} from '@nestjs/common';
-import { Response } from 'express';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { ApiResponse } from '../response/api-response';
 import { HttpStatus } from '../constants/http-status';
 import { BusinessCode } from '../constants/business-codes';
+import { RESPONSE_MAPPING } from '../constants/response-mapping';
 import { BusinessException } from './exceptions';
 
 /**
@@ -19,6 +13,18 @@ export interface ApiExceptionFilterOptions {
   includeStack?: boolean;
   /** Custom logger function */
   logger?: (error: unknown, context: string) => void;
+}
+
+/**
+ * Minimal structural shape this filter needs from the HTTP response object.
+ *
+ * Deliberately not `express.Response` — that would make `@types/express` a
+ * type-level dependency of every consumer of this filter. Express's
+ * `Response` satisfies this shape, so nothing changes at runtime for
+ * existing Express-based consumers.
+ */
+interface MinimalResponse {
+  status(code: number): { json(body: unknown): void };
 }
 
 /**
@@ -53,7 +59,7 @@ export class ApiExceptionFilter implements ExceptionFilter {
 
   catch(exception: unknown, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<Response>();
+    const response = ctx.getResponse<MinimalResponse>();
 
     let apiResponse: ApiResponse<null>;
 
@@ -136,17 +142,9 @@ export class ApiExceptionFilter implements ExceptionFilter {
    * Map HTTP status codes to business codes
    */
   private mapHttpStatusToBusinessCode(httpStatus: number): number {
-    const mapping: Record<number, number> = {
-      [NestHttpStatus.BAD_REQUEST]: BusinessCode.INVALID_INPUT,
-      [NestHttpStatus.UNAUTHORIZED]: BusinessCode.AUTH_FAILED,
-      [NestHttpStatus.FORBIDDEN]: BusinessCode.PERMISSION_DENIED,
-      [NestHttpStatus.NOT_FOUND]: BusinessCode.RESOURCE_NOT_FOUND,
-      [NestHttpStatus.CONFLICT]: BusinessCode.RESOURCE_CONFLICT,
-      [NestHttpStatus.UNPROCESSABLE_ENTITY]: BusinessCode.VALIDATION_ERROR,
-      [NestHttpStatus.TOO_MANY_REQUESTS]: BusinessCode.RATE_LIMIT_EXCEEDED,
-      [NestHttpStatus.INTERNAL_SERVER_ERROR]: BusinessCode.INTERNAL_ERROR,
-      [NestHttpStatus.SERVICE_UNAVAILABLE]: BusinessCode.SERVICE_UNAVAILABLE,
-    };
+    const mapping: Record<number, number> = Object.fromEntries(
+      Object.values(RESPONSE_MAPPING).map((entry) => [entry.httpStatus, entry.businessCode])
+    );
 
     return mapping[httpStatus] || BusinessCode.INTERNAL_ERROR;
   }

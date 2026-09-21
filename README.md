@@ -299,6 +299,17 @@ registerMessages("vi", {
 });
 ```
 
+`Locale` isn't limited to `'en'`/`'vi'` — any locale tag works, so you can register a fully custom locale:
+
+```typescript
+setLocale("fr");
+registerMessages("fr", {
+  2001: "Utilisateur introuvable",
+});
+
+getLocalizedMessage(2001); // "Utilisateur introuvable"
+```
+
 ---
 
 ## 📖 API Reference

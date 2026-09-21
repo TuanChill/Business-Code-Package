@@ -27,7 +27,7 @@
 
 import { ApiResponse } from '../response/api-response';
 import { HttpStatus } from '../constants/http-status';
-import { BusinessCode } from '../constants/business-codes';
+import { RESPONSE_MAPPING } from '../constants/response-mapping';
 
 /**
  * Response options for Next.js
@@ -76,8 +76,8 @@ export function jsonSuccess<T>(
  */
 export function jsonError(
   message: string,
-  statusCode: number = HttpStatus.INTERNAL_SERVER_ERROR,
-  businessCode: number = BusinessCode.INTERNAL_ERROR,
+  statusCode: number = RESPONSE_MAPPING.INTERNAL_ERROR.httpStatus,
+  businessCode: number = RESPONSE_MAPPING.INTERNAL_ERROR.businessCode,
   details?: Record<string, unknown>,
   options?: NextResponseOptions
 ): Response {
@@ -162,7 +162,13 @@ export function jsonBadRequest(
   details?: Record<string, unknown>,
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.BAD_REQUEST, BusinessCode.INVALID_INPUT, details, options);
+  return jsonError(
+    message,
+    RESPONSE_MAPPING.BAD_REQUEST.httpStatus,
+    RESPONSE_MAPPING.BAD_REQUEST.businessCode,
+    details,
+    options
+  );
 }
 
 /**
@@ -170,10 +176,10 @@ export function jsonBadRequest(
  */
 export function jsonUnauthorized(
   message: string = 'Unauthorized',
-  businessCode: number = BusinessCode.AUTH_FAILED,
+  businessCode: number = RESPONSE_MAPPING.UNAUTHORIZED.businessCode,
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.UNAUTHORIZED, businessCode, undefined, options);
+  return jsonError(message, RESPONSE_MAPPING.UNAUTHORIZED.httpStatus, businessCode, undefined, options);
 }
 
 /**
@@ -183,7 +189,13 @@ export function jsonForbidden(
   message: string = 'Forbidden',
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.FORBIDDEN, BusinessCode.PERMISSION_DENIED, undefined, options);
+  return jsonError(
+    message,
+    RESPONSE_MAPPING.FORBIDDEN.httpStatus,
+    RESPONSE_MAPPING.FORBIDDEN.businessCode,
+    undefined,
+    options
+  );
 }
 
 /**
@@ -191,10 +203,10 @@ export function jsonForbidden(
  */
 export function jsonNotFound(
   message: string = 'Not found',
-  businessCode: number = BusinessCode.RESOURCE_NOT_FOUND,
+  businessCode: number = RESPONSE_MAPPING.NOT_FOUND.businessCode,
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.NOT_FOUND, businessCode, undefined, options);
+  return jsonError(message, RESPONSE_MAPPING.NOT_FOUND.httpStatus, businessCode, undefined, options);
 }
 
 /**
@@ -202,10 +214,10 @@ export function jsonNotFound(
  */
 export function jsonConflict(
   message: string = 'Conflict',
-  businessCode: number = BusinessCode.RESOURCE_CONFLICT,
+  businessCode: number = RESPONSE_MAPPING.CONFLICT.businessCode,
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.CONFLICT, businessCode, undefined, options);
+  return jsonError(message, RESPONSE_MAPPING.CONFLICT.httpStatus, businessCode, undefined, options);
 }
 
 /**
@@ -216,7 +228,13 @@ export function jsonValidationError(
   message: string = 'Validation failed',
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.UNPROCESSABLE_ENTITY, BusinessCode.VALIDATION_ERROR, details, options);
+  return jsonError(
+    message,
+    RESPONSE_MAPPING.VALIDATION_ERROR.httpStatus,
+    RESPONSE_MAPPING.VALIDATION_ERROR.businessCode,
+    details,
+    options
+  );
 }
 
 /**
@@ -226,7 +244,13 @@ export function jsonTooManyRequests(
   message: string = 'Too many requests',
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.TOO_MANY_REQUESTS, BusinessCode.RATE_LIMIT_EXCEEDED, undefined, options);
+  return jsonError(
+    message,
+    RESPONSE_MAPPING.TOO_MANY_REQUESTS.httpStatus,
+    RESPONSE_MAPPING.TOO_MANY_REQUESTS.businessCode,
+    undefined,
+    options
+  );
 }
 
 /**
@@ -236,7 +260,13 @@ export function jsonInternalError(
   message: string = 'Internal server error',
   options?: NextResponseOptions
 ): Response {
-  return jsonError(message, HttpStatus.INTERNAL_SERVER_ERROR, BusinessCode.INTERNAL_ERROR, undefined, options);
+  return jsonError(
+    message,
+    RESPONSE_MAPPING.INTERNAL_ERROR.httpStatus,
+    RESPONSE_MAPPING.INTERNAL_ERROR.businessCode,
+    undefined,
+    options
+  );
 }
 
 /**

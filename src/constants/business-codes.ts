@@ -252,8 +252,11 @@ export type BusinessCodeValue = (typeof BusinessCode)[keyof typeof BusinessCode]
 
 /**
  * Default messages for business codes
+ *
+ * Canonical source for English default messages — `i18n/locales/en.ts`
+ * derives its `enMessages` map from this table instead of redeclaring it.
  */
-const businessCodeMessages: Record<number, string> = {
+export const businessCodeMessages: Record<number, string> = {
   // Success
   0: 'Operation completed successfully',
   1: 'Resource created successfully',

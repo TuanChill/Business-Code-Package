@@ -1,5 +1,5 @@
-import { BusinessCode, getBusinessCodeMessage } from '../constants/business-codes';
-import { HttpStatus } from '../constants/http-status';
+import { getBusinessCodeMessage } from '../constants/business-codes';
+import { RESPONSE_MAPPING } from '../constants/response-mapping';
 
 /**
  * Base class for business exceptions
@@ -16,7 +16,7 @@ export class BusinessException extends Error {
   constructor(
     public readonly businessCode: number,
     message?: string,
-    public readonly statusCode: number = HttpStatus.BAD_REQUEST,
+    public readonly statusCode: number = RESPONSE_MAPPING.BAD_REQUEST.httpStatus,
     public readonly details?: Record<string, unknown>
   ) {
     super(message ?? getBusinessCodeMessage(businessCode));
@@ -38,9 +38,9 @@ export class BusinessException extends Error {
 export class ValidationException extends BusinessException {
   constructor(details: Record<string, unknown>, message?: string) {
     super(
-      BusinessCode.VALIDATION_ERROR,
+      RESPONSE_MAPPING.VALIDATION_ERROR.businessCode,
       message ?? 'Validation failed',
-      HttpStatus.UNPROCESSABLE_ENTITY,
+      RESPONSE_MAPPING.VALIDATION_ERROR.httpStatus,
       details
     );
     this.name = 'ValidationException';
@@ -56,8 +56,8 @@ export class ValidationException extends BusinessException {
  * ```
  */
 export class AuthException extends BusinessException {
-  constructor(businessCode: number = BusinessCode.AUTH_FAILED, message?: string) {
-    super(businessCode, message, HttpStatus.UNAUTHORIZED);
+  constructor(businessCode: number = RESPONSE_MAPPING.UNAUTHORIZED.businessCode, message?: string) {
+    super(businessCode, message, RESPONSE_MAPPING.UNAUTHORIZED.httpStatus);
     this.name = 'AuthException';
   }
 }
@@ -72,7 +72,11 @@ export class AuthException extends BusinessException {
  */
 export class ForbiddenException extends BusinessException {
   constructor(message?: string) {
-    super(BusinessCode.PERMISSION_DENIED, message ?? 'Access denied', HttpStatus.FORBIDDEN);
+    super(
+      RESPONSE_MAPPING.FORBIDDEN.businessCode,
+      message ?? 'Access denied',
+      RESPONSE_MAPPING.FORBIDDEN.httpStatus
+    );
     this.name = 'ForbiddenException';
   }
 }
@@ -86,8 +90,8 @@ export class ForbiddenException extends BusinessException {
  * ```
  */
 export class NotFoundException extends BusinessException {
-  constructor(message?: string, businessCode: number = BusinessCode.RESOURCE_NOT_FOUND) {
-    super(businessCode, message ?? 'Resource not found', HttpStatus.NOT_FOUND);
+  constructor(message?: string, businessCode: number = RESPONSE_MAPPING.NOT_FOUND.businessCode) {
+    super(businessCode, message ?? 'Resource not found', RESPONSE_MAPPING.NOT_FOUND.httpStatus);
     this.name = 'NotFoundException';
   }
 }
@@ -101,8 +105,8 @@ export class NotFoundException extends BusinessException {
  * ```
  */
 export class ConflictException extends BusinessException {
-  constructor(message?: string, businessCode: number = BusinessCode.RESOURCE_CONFLICT) {
-    super(businessCode, message ?? 'Resource conflict', HttpStatus.CONFLICT);
+  constructor(message?: string, businessCode: number = RESPONSE_MAPPING.CONFLICT.businessCode) {
+    super(businessCode, message ?? 'Resource conflict', RESPONSE_MAPPING.CONFLICT.httpStatus);
     this.name = 'ConflictException';
   }
 }
@@ -118,9 +122,9 @@ export class ConflictException extends BusinessException {
 export class RateLimitException extends BusinessException {
   constructor(message?: string) {
     super(
-      BusinessCode.RATE_LIMIT_EXCEEDED,
+      RESPONSE_MAPPING.TOO_MANY_REQUESTS.businessCode,
       message ?? 'Too many requests',
-      HttpStatus.TOO_MANY_REQUESTS
+      RESPONSE_MAPPING.TOO_MANY_REQUESTS.httpStatus
     );
     this.name = 'RateLimitException';
   }
@@ -135,8 +139,8 @@ export class RateLimitException extends BusinessException {
  * ```
  */
 export class InternalServerException extends BusinessException {
-  constructor(message?: string, businessCode: number = BusinessCode.INTERNAL_ERROR) {
-    super(businessCode, message ?? 'Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+  constructor(message?: string, businessCode: number = RESPONSE_MAPPING.INTERNAL_ERROR.businessCode) {
+    super(businessCode, message ?? 'Internal server error', RESPONSE_MAPPING.INTERNAL_ERROR.httpStatus);
     this.name = 'InternalServerException';
   }
 }
@@ -150,8 +154,8 @@ export class InternalServerException extends BusinessException {
  * ```
  */
 export class BadRequestException extends BusinessException {
-  constructor(message?: string, businessCode: number = BusinessCode.INVALID_INPUT) {
-    super(businessCode, message ?? 'Bad request', HttpStatus.BAD_REQUEST);
+  constructor(message?: string, businessCode: number = RESPONSE_MAPPING.BAD_REQUEST.businessCode) {
+    super(businessCode, message ?? 'Bad request', RESPONSE_MAPPING.BAD_REQUEST.httpStatus);
     this.name = 'BadRequestException';
   }
 }
@@ -165,8 +169,8 @@ export class BadRequestException extends BusinessException {
  * ```
  */
 export class ServiceUnavailableException extends BusinessException {
-  constructor(message?: string, businessCode: number = BusinessCode.SERVICE_UNAVAILABLE) {
-    super(businessCode, message ?? 'Service unavailable', HttpStatus.SERVICE_UNAVAILABLE);
+  constructor(message?: string, businessCode: number = RESPONSE_MAPPING.SERVICE_UNAVAILABLE.businessCode) {
+    super(businessCode, message ?? 'Service unavailable', RESPONSE_MAPPING.SERVICE_UNAVAILABLE.httpStatus);
     this.name = 'ServiceUnavailableException';
   }
 }

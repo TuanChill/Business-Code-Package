@@ -8,6 +8,7 @@ import type {
 } from '../types';
 import { HttpStatus } from '../constants/http-status';
 import { BusinessCode } from '../constants/business-codes';
+import { RESPONSE_MAPPING } from '../constants/response-mapping';
 
 /**
  * Standardized API Response class
@@ -194,8 +195,8 @@ export class ApiResponse<T = unknown> {
   static badRequest(message?: string, details?: Record<string, unknown>): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Bad request',
-      code: BusinessCode.INVALID_INPUT,
-      statusCode: HttpStatus.BAD_REQUEST,
+      code: RESPONSE_MAPPING.BAD_REQUEST.businessCode,
+      statusCode: RESPONSE_MAPPING.BAD_REQUEST.httpStatus,
       details,
     });
   }
@@ -210,8 +211,8 @@ export class ApiResponse<T = unknown> {
   static unauthorized(message?: string, code?: number): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Unauthorized',
-      code: code ?? BusinessCode.AUTH_FAILED,
-      statusCode: HttpStatus.UNAUTHORIZED,
+      code: code ?? RESPONSE_MAPPING.UNAUTHORIZED.businessCode,
+      statusCode: RESPONSE_MAPPING.UNAUTHORIZED.httpStatus,
     });
   }
 
@@ -224,8 +225,8 @@ export class ApiResponse<T = unknown> {
   static forbidden(message?: string): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Forbidden',
-      code: BusinessCode.PERMISSION_DENIED,
-      statusCode: HttpStatus.FORBIDDEN,
+      code: RESPONSE_MAPPING.FORBIDDEN.businessCode,
+      statusCode: RESPONSE_MAPPING.FORBIDDEN.httpStatus,
     });
   }
 
@@ -239,8 +240,8 @@ export class ApiResponse<T = unknown> {
   static notFound(message?: string, code?: number): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Not found',
-      code: code ?? BusinessCode.RESOURCE_NOT_FOUND,
-      statusCode: HttpStatus.NOT_FOUND,
+      code: code ?? RESPONSE_MAPPING.NOT_FOUND.businessCode,
+      statusCode: RESPONSE_MAPPING.NOT_FOUND.httpStatus,
     });
   }
 
@@ -254,8 +255,8 @@ export class ApiResponse<T = unknown> {
   static conflict(message?: string, code?: number): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Conflict',
-      code: code ?? BusinessCode.RESOURCE_CONFLICT,
-      statusCode: HttpStatus.CONFLICT,
+      code: code ?? RESPONSE_MAPPING.CONFLICT.businessCode,
+      statusCode: RESPONSE_MAPPING.CONFLICT.httpStatus,
     });
   }
 
@@ -269,8 +270,8 @@ export class ApiResponse<T = unknown> {
   static validationError(details: Record<string, unknown>, message?: string): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Validation failed',
-      code: BusinessCode.VALIDATION_ERROR,
-      statusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      code: RESPONSE_MAPPING.VALIDATION_ERROR.businessCode,
+      statusCode: RESPONSE_MAPPING.VALIDATION_ERROR.httpStatus,
       details,
     });
   }
@@ -284,8 +285,8 @@ export class ApiResponse<T = unknown> {
   static tooManyRequests(message?: string): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Too many requests',
-      code: BusinessCode.RATE_LIMIT_EXCEEDED,
-      statusCode: HttpStatus.TOO_MANY_REQUESTS,
+      code: RESPONSE_MAPPING.TOO_MANY_REQUESTS.businessCode,
+      statusCode: RESPONSE_MAPPING.TOO_MANY_REQUESTS.httpStatus,
     });
   }
 
@@ -298,8 +299,8 @@ export class ApiResponse<T = unknown> {
   static internalError(message?: string): ApiResponse<null> {
     return ApiResponse.error({
       message: message ?? 'Internal server error',
-      code: BusinessCode.INTERNAL_ERROR,
-      statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+      code: RESPONSE_MAPPING.INTERNAL_ERROR.businessCode,
+      statusCode: RESPONSE_MAPPING.INTERNAL_ERROR.httpStatus,
     });
   }
 

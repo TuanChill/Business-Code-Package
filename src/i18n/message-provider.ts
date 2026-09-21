@@ -5,17 +5,27 @@
  * with support for custom message overrides.
  */
 
-import { Locale, MessageMap, I18nConfig, DEFAULT_UNKNOWN_MESSAGE } from './types';
+import { Locale, MessageMap, I18nConfig, DEFAULT_UNKNOWN_MESSAGE, BuiltInLocale } from './types';
 import { enMessages } from './locales/en';
 import { viMessages } from './locales/vi';
 
 /**
- * Built-in messages for all supported locales
+ * Built-in messages for the built-in locales only. `Locale` is wider than
+ * this (accepts custom locale tags), so lookups against this map go through
+ * `getBuiltInMessageMap` rather than indexing it directly.
  */
-const builtInMessages: Record<Locale, MessageMap> = {
+const builtInMessages: Record<BuiltInLocale, MessageMap> = {
   en: enMessages,
   vi: viMessages,
 };
+
+function getBuiltInMessageMap(locale: Locale): MessageMap | undefined {
+  return (builtInMessages as Partial<Record<string, MessageMap>>)[locale];
+}
+
+function getDefaultUnknownMessage(locale: Locale): string {
+  return (DEFAULT_UNKNOWN_MESSAGE as Partial<Record<string, string>>)[locale] ?? DEFAULT_UNKNOWN_MESSAGE.en;
+}
 
 /**
  * Business Message Provider Class
@@ -91,7 +101,7 @@ export class BusinessMessageProvider {
     }
 
     // 2. Check built-in messages
-    const builtInMessage = builtInMessages[targetLocale]?.[code];
+    const builtInMessage = getBuiltInMessageMap(targetLocale)?.[code];
     if (builtInMessage) {
       return builtInMessage;
     }
@@ -103,14 +113,14 @@ export class BusinessMessageProvider {
         return fallbackCustom;
       }
 
-      const fallbackBuiltIn = builtInMessages[this.fallbackLocale]?.[code];
+      const fallbackBuiltIn = getBuiltInMessageMap(this.fallbackLocale)?.[code];
       if (fallbackBuiltIn) {
         return fallbackBuiltIn;
       }
     }
 
     // 4. Return unknown message
-    return DEFAULT_UNKNOWN_MESSAGE[targetLocale] ?? DEFAULT_UNKNOWN_MESSAGE.en;
+    return getDefaultUnknownMessage(targetLocale);
   }
 
   /**
@@ -120,7 +130,7 @@ export class BusinessMessageProvider {
     const targetLocale = locale ?? this.locale;
     return (
       this.customMessages.get(targetLocale)?.[code] !== undefined ||
-      builtInMessages[targetLocale]?.[code] !== undefined
+      getBuiltInMessageMap(targetLocale)?.[code] !== undefined
     );
   }
 }
